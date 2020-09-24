@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-09-24T05:59:50.260Z" agent="5.0 (Windows)" etag="7r6n3rzakBNd6ucNIATf" version="13.7.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-09-24T06:00:37.462Z" agent="5.0 (Windows)" etag="8vhnsqyq2Dp-F0NbNs93" version="13.7.5" type="github">
   <diagram name="Page-1" id="03018318-947c-dd8e-b7a3-06fadd420f32">
     <mxGraphModel dx="1896" dy="1919" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
@@ -68,6 +68,9 @@
         </mxCell>
         <mxCell id="KyJEyf6-9jhyd7c3mLH5-51" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.containers.videoPlayer;strokeColor=#666666;strokeColor2=#008cff;strokeColor3=#c4c4c4;textColor=#666666;fillColor2=#008cff;barHeight=30;barPos=20;fontFamily=Tahoma;fontSize=16;fontColor=#000000;" vertex="1" parent="1">
           <mxGeometry x="865" y="330" width="380" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="KyJEyf6-9jhyd7c3mLH5-52" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.youtube_2;fillColor=#FF2626;gradientColor=#B5171F;fontFamily=Tahoma;fontSize=16;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1022" y="425" width="78.2" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
