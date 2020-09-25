@@ -10,7 +10,9 @@ import "./App.css";
 import StatsComp from "./StatsComp";
 import Map from "./Map";
 import VaccineTable from "./VaccineTable";
-//import { useHistory } from "react-router-dom";
+import "leaflet/dist/leaflet.css";
+import { prettyPrintStat } from "./utility";
+import numeral from "numeral";
 
 function App() {
   const [countries, initCountries] = useState([]);
@@ -19,8 +21,14 @@ function App() {
   const [countryInfo, initCountryInfo] = useState([]);
   const [vaccineInfo, initVaccineInfo] = useState([]);
   const [vaccinePhases, initVaccinePhases] = useState([]);
-
-  //const history = useHistory();
+  const [hcmapCenter, inithcmapCenter] = useState({
+    lat: 34.80746,
+    lng: 40.4796,
+  });
+  const [hcmapZoom, inithcmapZoom] = useState(3);
+  const [hcmapCountries, inithcmapCountries] = useState([]);
+  const [hccasesType, inithcCasesType] = useState("cases");
+  //const [{ vaccineData }, dispatch] = useStateValue();
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -42,6 +50,7 @@ function App() {
             flag: <img src={country.countryInfo.flag} alt="countryFlag" />,
           }));
           initCountries(countries);
+          inithcmapCountries(data);
         });
     };
 
@@ -60,7 +69,6 @@ function App() {
     getVaccineData();
   }, []);
 
-  console.log("VaccinePhases ::: ", vaccinePhases);
   //Listener
   const listenCountrySelect = async (event) => {
     const countryValue = event.target.value;
@@ -76,16 +84,17 @@ function App() {
       .then((data) => {
         initCountry(countryValue);
         initCountryInfo(data);
+        inithcmapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        inithcmapZoom(4);
       });
   };
 
-  console.log("URL :::: ", countryInfo);
-  console.log("Vcccinee :::", vaccineInfo);
   return (
     <div className="app">
       <div className="HC__left">
         <div className="HC__Header">
           {/*Title of the Website*/}
+
           <h1>Honest Covid</h1>
         </div>
 
@@ -114,31 +123,46 @@ function App() {
 
         <div className="HC__statistics">
           <StatsComp
+            onClick={(e) => inithcCasesType("recovered")}
             title="Recovered"
-            cases={countryInfo.todayRecovered}
-            total={countryInfo.recovered}
+            active={hccasesType === "recovered"}
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
+            total={numeral(countryInfo.recovered).format("0.0a")}
           />
           <StatsComp
-            title="Cases"
-            cases={countryInfo.todayCases}
-            total={countryInfo.cases}
+            onClick={(e) => inithcCasesType("cases")}
+            title="Coronavirus Cases"
+            isRed
+            active={hccasesType === "cases"}
+            cases={prettyPrintStat(countryInfo.todayCases)}
+            total={numeral(countryInfo.cases).format("0.0a")}
           />
           <StatsComp
+            onClick={(e) => inithcCasesType("deaths")}
             title="Deaths"
-            cases={countryInfo.todayDeaths}
-            total={countryInfo.deaths}
+            isRed
+            active={hccasesType === "deaths"}
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
+            total={numeral(countryInfo.deaths).format("0.0a")}
           />
         </div>
 
-        <Map />
+        <Map
+          casesType={hccasesType}
+          countries={hcmapCountries}
+          center={hcmapCenter}
+          zoom={hcmapZoom}
+        />
       </div>
 
       {/* Here comes vaccine status and video*/}
       <Card className="HC__right">
         <CardContent>
-          <h3> Vaccine Status</h3>
-          <VaccineTable vaccines={vaccinePhases} />
-          <h3> Good Practices during COVID</h3>
+          <div className="HC_app_info">
+            <h3> Vaccine Status</h3>
+            <VaccineTable vaccines={vaccinePhases} />
+            <h3> Good Practices during COVID</h3>
+          </div>
         </CardContent>
       </Card>
     </div>

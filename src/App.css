@@ -3,20 +3,21 @@
 }
 
 body {
-  background-color: powderblue;
+  background-color: ghostwhite;
 }
 
 .HC__Header {
   display: flex;
+  align-items: center;
   margin-bottom: 20px;
-  margin-top: 10px;
-  justify-content: space-around;
+  justify-content: space-between;
+  color: cadetblue;
+  font-size: 2rem;
 }
 
 .HC__countries__dropdown {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background-color: white;
 }
 
 .HC__menuitem > img {
@@ -32,10 +33,14 @@ body {
 
 .HC__statistics {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 .app {
   display: flex;
   justify-content: space-evenly;
+  background-color: #f5f6fa;
   padding: 20px;
 }
 
@@ -45,4 +50,26 @@ body {
   }
 }
 
+.HC__left {
+  flex: 0.9;
+}
+.HC__right {
+  flex: 0.42;
+  display: flex;
+  flex-direction: column;
+}
 
+.HC_app_info > h3 {
+  color: #6a5d5d;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1px;
+}
+
+.HC_app_info > h3:last-of-type {
+  margin-top: 1rem;
+}
+
+.MuiSelect-selectMenu > img {
+  height: 13px;
+}

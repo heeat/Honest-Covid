@@ -4,7 +4,7 @@
   color: #6a5d5d;
 }
 
-.HC__vaccinetable tr:nth-of-type(odd) {
+.HC__vaccinetable tr:nth-of-type(even) {
   background-color: #f3f2f8;
 }
 
@@ -18,4 +18,11 @@
 }
 .HC__VcOne {
   justify-content: space-around;
+}
+
+.HC_first_tr {
+  margin-left: 2px;
+  margin-bottom: 10px;
+  font-size: large;
+  font-weight: 500;
 }
