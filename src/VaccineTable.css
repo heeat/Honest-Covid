@@ -1,0 +1,21 @@
+.HC__vaccinetable {
+  margin-top: 20px;
+  height: 400px;
+  color: #6a5d5d;
+}
+
+.HC__vaccinetable tr:nth-of-type(odd) {
+  background-color: #f3f2f8;
+}
+
+.HC__vaccinetable tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.HC__vaccinetable td {
+  padding: 0.5rem;
+}
+.HC__VcOne {
+  justify-content: space-around;
+}
